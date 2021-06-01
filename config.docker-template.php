@@ -1,23 +1,23 @@
-<?php  // Moodle configuration file
+<?php // Moodle configuration file
 
 unset($CFG);
 global $CFG;
 $CFG = new stdClass();
 
-$CFG->dbtype    = getenv('MOODLE_DOCKER_DBTYPE');
+$CFG->dbtype = getenv('MOODLE_DOCKER_DBTYPE');
 $CFG->dblibrary = 'native';
-$CFG->dbhost    = 'db';
-$CFG->dbname    = getenv('MOODLE_DOCKER_DBNAME');
-$CFG->dbuser    = getenv('MOODLE_DOCKER_DBUSER');
-$CFG->dbpass    = getenv('MOODLE_DOCKER_DBPASS');
-$CFG->prefix    = 'm_';
+$CFG->dbhost = 'db';
+$CFG->dbname = getenv('MOODLE_DOCKER_DBNAME');
+$CFG->dbuser = getenv('MOODLE_DOCKER_DBUSER');
+$CFG->dbpass = getenv('MOODLE_DOCKER_DBPASS');
+$CFG->prefix = 'm_';
 $CFG->dboptions = ['dbcollation' => getenv('MOODLE_DOCKER_DBCOLLATION')];
 
 $host = 'localhost';
 if (!empty(getenv('MOODLE_DOCKER_WEB_HOST'))) {
     $host = getenv('MOODLE_DOCKER_WEB_HOST');
 }
-$CFG->wwwroot   = "http://{$host}";
+$CFG->wwwroot = "http://{$host}";
 $port = getenv('MOODLE_DOCKER_WEB_PORT');
 if (!empty($port)) {
     // Extract port in case the format is bind_ip:port.
@@ -27,8 +27,8 @@ if (!empty($port)) {
         $CFG->wwwroot .= ":{$port}";
     }
 }
-$CFG->dataroot  = '/var/www/moodledata';
-$CFG->admin     = 'admin';
+$CFG->dataroot = '/var/www/moodledata';
+$CFG->admin = 'admin';
 $CFG->directorypermissions = 0777;
 $CFG->smtphosts = 'mailhog:1025';
 $CFG->noreplyaddress = 'noreply@example.com';
@@ -43,13 +43,14 @@ $CFG->allowthemechangeonurl = 1;
 $CFG->passwordpolicy = 0;
 $CFG->cronclionly = 0;
 $CFG->pathtophp = '/usr/local/bin/php';
+$CFG->lang="zh_cn";
 
-$CFG->phpunit_dataroot  = '/var/www/phpunitdata';
+$CFG->phpunit_dataroot = '/var/www/phpunitdata';
 $CFG->phpunit_prefix = 't_';
 define('TEST_EXTERNAL_FILES_HTTP_URL', 'http://exttests');
 
-$CFG->behat_wwwroot   = 'http://webserver';
-$CFG->behat_dataroot  = '/var/www/behatdata';
+$CFG->behat_wwwroot = 'http://webserver';
+$CFG->behat_dataroot = '/var/www/behatdata';
 $CFG->behat_prefix = 'b_';
 $CFG->behat_profiles = array(
     'default' => array(

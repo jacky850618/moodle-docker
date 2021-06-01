@@ -1,14 +1,14 @@
-version: "2"
+version: "3"
 services:
   webserver:
     environment:
-      MOODLE_DOCKER_APP: "true"
+      - MOODLE_DOCKER_APP=true
   moodleapp:
     image: node:11
     working_dir: /app
     command: npm run ionic:serve
     volumes:
-      - "${MOODLE_DOCKER_APP_PATH}:/app"
+      - ${MOODLE_DOCKER_APP_PATH}:/app
     expose:
       - 8100
       - 35729

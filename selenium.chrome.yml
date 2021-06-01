@@ -1,9 +1,9 @@
-version: "2"
+version: "3"
 services:
   webserver:
     environment:
-      MOODLE_DOCKER_BROWSER: chrome
+      - MOODLE_DOCKER_BROWSER=chrome
   selenium:
-    image: "selenium/standalone-chrome${MOODLE_DOCKER_SELENIUM_SUFFIX}:3"
+    image: selenium/standalone-chrome${MOODLE_DOCKER_SELENIUM_SUFFIX}:3
     volumes:
-        - /dev/shm:/dev/shm
+      - /dev/shm:/dev/shm

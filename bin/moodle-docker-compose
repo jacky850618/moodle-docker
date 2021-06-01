@@ -112,5 +112,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
     dockercompose="${dockercompose} -f ${basedir}/volumes-cached.yml"
 fi
 
+echo 'docker-compose command is : '${dockercompose}
 
 $dockercompose "$@"
